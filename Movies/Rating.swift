@@ -24,6 +24,15 @@ class Rating: Object, Mappable {
         return "id"
     }
     
+    
+    var user: User! {
+        return realm!.object(ofType: User.self, forPrimaryKey: idUser)!
+    }
+    
+    var date: Date {
+        return Date(timeIntervalSince1970: timestamp)
+    }
+    
     required convenience init?(map: Map) {
         
         //In case the JSON doesn't have this fields, returns nil

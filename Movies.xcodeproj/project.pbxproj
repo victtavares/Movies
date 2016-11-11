@@ -18,6 +18,10 @@
 		35D47C3E1DD37F2E00CEB05D /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D47C3D1DD37F2E00CEB05D /* Rating.swift */; };
 		35D47C401DD37F7800CEB05D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D47C3F1DD37F7800CEB05D /* User.swift */; };
 		3CBA58F21616305E2271E233 /* Pods_Movies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A8EDA43A2B757035E1E3A6 /* Pods_Movies.framework */; };
+		E1EB30681DD53A2E00122D8F /* MoviesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EB30671DD53A2E00122D8F /* MoviesTableViewCell.swift */; };
+		E1EB306A1DD53F3C00122D8F /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EB30691DD53F3C00122D8F /* UIViewController+Extension.swift */; };
+		E1EB306C1DD5604300122D8F /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EB306B1DD5604300122D8F /* MovieDetailViewController.swift */; };
+		E1EB306E1DD5670C00122D8F /* RatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EB306D1DD5670B00122D8F /* RatingTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +39,10 @@
 		35D47C3F1DD37F7800CEB05D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C078F37799EBB55898BB7D01 /* Pods-Movies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movies/Pods-Movies.debug.xcconfig"; sourceTree = "<group>"; };
 		C9A8EDA43A2B757035E1E3A6 /* Pods_Movies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1EB30671DD53A2E00122D8F /* MoviesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesTableViewCell.swift; sourceTree = "<group>"; };
+		E1EB30691DD53F3C00122D8F /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		E1EB306B1DD5604300122D8F /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		E1EB306D1DD5670B00122D8F /* RatingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingTableViewCell.swift; sourceTree = "<group>"; };
 		E56CC2B237201F9F3AE7E91B /* Pods-Movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movies/Pods-Movies.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,6 +82,10 @@
 				35D47C231DD35B9A00CEB05D /* AppDelegate.swift */,
 				35D47C351DD3761D00CEB05D /* MoviesService.swift */,
 				35D47C371DD3790800CEB05D /* MoviesViewController.swift */,
+				E1EB306B1DD5604300122D8F /* MovieDetailViewController.swift */,
+				E1EB30691DD53F3C00122D8F /* UIViewController+Extension.swift */,
+				E1EB30671DD53A2E00122D8F /* MoviesTableViewCell.swift */,
+				E1EB306D1DD5670B00122D8F /* RatingTableViewCell.swift */,
 				35D47C391DD379F700CEB05D /* MoviesResponse.swift */,
 				35D47C3B1DD37E9900CEB05D /* Movie.swift */,
 				35D47C3F1DD37F7800CEB05D /* User.swift */,
@@ -227,12 +239,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1EB306A1DD53F3C00122D8F /* UIViewController+Extension.swift in Sources */,
 				35D47C3E1DD37F2E00CEB05D /* Rating.swift in Sources */,
 				35D47C241DD35B9A00CEB05D /* AppDelegate.swift in Sources */,
+				E1EB30681DD53A2E00122D8F /* MoviesTableViewCell.swift in Sources */,
 				35D47C3A1DD379F700CEB05D /* MoviesResponse.swift in Sources */,
 				35D47C361DD3761D00CEB05D /* MoviesService.swift in Sources */,
+				E1EB306C1DD5604300122D8F /* MovieDetailViewController.swift in Sources */,
 				35D47C381DD3790800CEB05D /* MoviesViewController.swift in Sources */,
 				35D47C3C1DD37E9900CEB05D /* Movie.swift in Sources */,
+				E1EB306E1DD5670C00122D8F /* RatingTableViewCell.swift in Sources */,
 				35D47C401DD37F7800CEB05D /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

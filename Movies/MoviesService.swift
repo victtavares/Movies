@@ -25,12 +25,17 @@ class MoviesService {
     let defaultPersistenceErrorMessage = "Erro ao persistir seus dados!"
     var realm: Realm
     
+    
+    
     init() {
         realm = try! Realm()
     }
     
     
+    ///Loading the data and parsing it on a background thread
+    ///Too big json to load it on main thread.
     func loadData(completionHandler: ((_ errorType:LoadDataError?) -> Void)?) {
+        
         
         //weakify self to avoid retain cycles.
         Alamofire.request(url).responseJSON {[weak self]
@@ -38,34 +43,45 @@ class MoviesService {
             guard let this = self else {return}
             
             
-            //converting the response result into the Movie Response Object
-            guard let moviesData = Mapper<MoviesResponse>().map(JSON: response.result.value as! [String : Any]) else {
-                completionHandler?(LoadDataError.serverError(message: this.defaultErrorMessage))
-               return
-            }
-        
-            //persisting loginData
-            do {
-                try this.realm.write {
-                    //cleaning the cache data to avoid inconsistency between stored data locally and on server
-                    this.realm.delete(this.realm.objects(User.self))
-                    this.realm.delete(this.realm.objects(Movie.self))
-                    this.realm.delete(this.realm.objects(Rating.self))
-                    
-                    //adding the new Data
-                    this.realm.add(moviesData.users, update: true)
-                    this.realm.add(moviesData.movies, update: true)
-                    this.realm.add(moviesData.ratings, update: true)
-                    
+            //dispatch it on back thread, the json response is too big to load it on the main thread.
+            DispatchQueue.global(qos: .userInitiated).async {
+                
+                
+                let backRealm = try! Realm() //background thread realm..
+
+                guard let moviesData = Mapper<MoviesResponse>().map(JSON: response.result.value as! [String : Any]) else {
+                    completionHandler?(LoadDataError.serverError(message: this.defaultErrorMessage))
+                    return
                 }
-            }catch {
-                completionHandler?(LoadDataError.serverError(message: this.defaultPersistenceErrorMessage))
-                return
+                
+                
+                backRealm.beginWrite()
+                //adding the new Data
+                backRealm.add(moviesData.users, update: true)
+                backRealm.add(moviesData.movies, update: true)
+                backRealm.add(moviesData.ratings, update: true)
+                
+                do {
+                    try backRealm.commitWrite()
+                } catch {
+                    completionHandler?(LoadDataError.serverError(message: this.defaultPersistenceErrorMessage))
+                }
+                
+                print("done here")
+                completionHandler?(nil)
+                
             }
             
-            completionHandler?(nil)
-            debugPrint(response)
+            //converting the response result into the Movie Response Object
+            
         }
+        
     }
+
+        
+        func getLocalMovies() -> Results<Movie> {
+            return realm.objects(Movie.self)
+        }
+        
     
 }
